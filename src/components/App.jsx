@@ -2,8 +2,8 @@
 
 import React, { useEffect, useState, useRef } from 'react'
 import { BiSearch } from 'react-icons/bi'
-import { AiFillStar, AiFillEye } from "react-icons/ai";
-import { TbGitFork } from "react-icons/tb";
+import { AiFillStar, AiFillEye } from 'react-icons/ai'
+import { TbGitFork } from 'react-icons/tb'
 
 import Header from './Header'
 import Body from './Body'
@@ -12,14 +12,16 @@ import Repo from './Repo'
 import Logo from '../assets/Logo.png'
 
 import URL from '../utilities/URL.json'
-import { quickSort } from '../utilities/sort';
+import { quickSort } from '../utilities/sort'
+import { findRepo } from '../utilities/repo'
 
 const App = () => {
   const [data, setData] = useState([])
+  const [backup, setBackup] = useState([])
 
   const input = useRef(null)
 
-  const onClick = async (e) => {
+  const onClick = async e => {
     e.preventDefault()
 
     const content = input.current.value
@@ -37,46 +39,58 @@ const App = () => {
           console.log(err)
         })
 
-      setData(data);
+      setData(data)
+      setBackup(data)
     }
   }
 
-  const sortStars = (e) => {
+  const sortStars = e => {
     e.preventDefault()
 
-    let newData = quickSort(data, "stargazers_count")
-    
-    setData(newData);
+    let newData = quickSort(data, 'stargazers_count')
+
+    setData(newData)
   }
 
-  const sortViews = (e) => {
+  const sortViews = e => {
     e.preventDefault()
 
-    let newData = quickSort(data, "watchers_count")
+    let newData = quickSort(data, 'watchers_count')
 
-    setData(newData);
+    setData(newData)
   }
 
-  const sortForks = (e) => {
+  const sortForks = e => {
     e.preventDefault()
 
-    let newData = quickSort(data, "forks_count")
+    let newData = quickSort(data, 'forks_count')
 
-    setData(newData);
+    setData(newData)
+  }
+
+  const onChange = e => {
+    const repo = e.target.value
+
+    setData(findRepo(backup, repo))
   }
 
   useEffect(() => {
     const meRepo = async () => {
-      const github = URL.github;
+      const github = URL.github
 
-      setData(await fetch(github.url + "shelldog" + "/repos", {
+      const res = await fetch(github.url + 'shelldog' + '/repos', {
         method: github.method,
-        headers: github.headers
-      }).then(res => { return res.json() }))
+        headers: github.headers,
+      }).then(res => {
+        return res.json()
+      })
+
+      setData(res)
+      setBackup(res)
     }
 
-    meRepo();
-  }, []);
+    meRepo()
+  }, [])
 
   return (
     <div className="app">
@@ -113,21 +127,35 @@ const App = () => {
                 <p className="sort-h">Sort by:</p>
                 <div className="flex">
                   <a className="sort-s" onClick={sortStars}>
-                    <AiFillStar /> 
+                    <AiFillStar />
                   </a>
                   <a className="sort-s" onClick={sortViews}>
                     <AiFillEye />
                   </a>
                   <a className="sort-s" onClick={sortForks}>
-                    <TbGitFork /> 
+                    <TbGitFork />
                   </a>
                 </div>
               </div>
             </div>
             <div className="r-c container container-p-all">
+              <div className="s-r flex jc-e">
+                <input
+                  className="s-i-s"
+                  placeholder="Search a repository name."
+                  onChange={onChange}
+                />
+              </div>
               <div className="grid">
                 {data.map(d => (
-                  <Repo key={d.id} name={d.name} visibility={d.visibility} language={d.language} stars={d.stargazers_count} url={d.html_url}>
+                  <Repo
+                    key={d.id}
+                    name={d.name}
+                    visibility={d.visibility}
+                    language={d.language}
+                    stars={d.stargazers_count}
+                    url={d.html_url}
+                  >
                     {d.description}
                   </Repo>
                 ))}

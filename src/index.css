@@ -91,6 +91,10 @@ body {
   justify-content: center;
 }
 
+.jc-e {
+  justify-content: end;
+}
+
 .jc-c-sb {
   justify-content: space-between;
 }

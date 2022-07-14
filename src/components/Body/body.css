@@ -33,6 +33,19 @@
   width: 16rem;
 }
 
+.s-i-s {
+  border: 1px solid #000000;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding-top: 0.1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 0.1rem;
+  height: 2rem;
+  width: 12rem;
+}
+
 .s-btn {
   background-color: #e23d5e;
   border-radius: 50%;
@@ -45,6 +58,10 @@
 
 .s-btn:hover {
   transform: scale(1.1)
+}
+
+.s-r {
+  margin-bottom: 1rem;
 }
 
 .sort-h {
