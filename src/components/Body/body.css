@@ -1,0 +1,65 @@
+.body {
+
+}
+
+.body-s-w {
+
+}
+
+.s-c {
+}
+
+.s-b-c {
+
+}
+
+.s-h {
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 0.2rem;
+}
+
+.s-i {
+  border: 1px solid #000000;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding-top: 0.1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 0.1rem;
+  margin-right: 0.4rem;
+  height: 2rem;
+  width: 16rem;
+}
+
+.s-btn {
+  background-color: #e23d5e;
+  border-radius: 50%;
+  color: #ffffff;
+  height: 2rem;
+  cursor: pointer;
+  transition: 200ms ease-in-out all;
+  width: 2rem;
+}
+
+.s-btn:hover {
+  transform: scale(1.1)
+}
+
+.sort-h {
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 0.2rem;
+}
+
+.sort-s {
+  cursor: pointer;
+  transition: 200ms ease-in-out all;
+  margin-right: 0.2rem;
+}
+
+.sort-s:hover {
+  color: #e23d5e;
+  transform: scale(1.3);
+}

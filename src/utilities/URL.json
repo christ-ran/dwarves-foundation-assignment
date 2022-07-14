@@ -1,0 +1,10 @@
+{
+  "github": {
+    "url": "https://api.github.com/users/",
+    "method": "get",
+    "headers": {
+      "Accept": "application.json",
+      "Content-Type": "application/json"
+    }
+  }
+}

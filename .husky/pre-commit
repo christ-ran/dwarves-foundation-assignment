@@ -1,0 +1,44 @@
+# Copyright(c) 2022-2023 Kha Tran.
+
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+
+# On committing to Github.
+
+echo "[🚧] On committing to Github through CI process, please be patient.";
+
+npm run lint || (
+tput setaf 1; echo "[0/4] ESLint check FAILED. \nThere's something wrong in source codes. \n(Please use 'npm run linting' to fix it or check the error logs).";
+false;
+)
+
+echo "[1/4] ESLint check passed. ✨";
+
+npm run pretty || (
+tput setaf 1; echo "[1/4] Prettier check FAILED. \nPlease format source codes before committing it.";
+false;
+)
+
+echo "[2/4] Prettier check passed. ✨";
+
+npm run test:unit || (
+tput setaf 1; echo "[2/4] Jest check unit tests FAILED. \nPlease check carefully your test file or remove it before committing.";
+false;
+)
+
+# npm run test:intergration || (
+# tput setaf 1; echo "[2/4] Jest check intergration tests FAILED. \nPlease check carefully your test file or remove it before committing.";
+# false;
+# )
+
+echo "[3/4] Jest check passed. ✨";
+
+npm run build:process || (
+tput setaf 1; echo "[3/4] Webpack build FAILED. \nIt's seems like something is going wrong with it.";
+false;
+)
+
+echo "[4/4] Webpack build passed. ✨";
+
+echo "[✅] All stages has been passed. On the way to commit... ✨";

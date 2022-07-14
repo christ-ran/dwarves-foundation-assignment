@@ -1,0 +1,14 @@
+.header {
+  position: relative;
+  z-index: 1;
+}
+
+.header-logo-c {
+  align-items: center; 
+}
+
+.header-heading {
+  font-size: 1rem;
+  cursor: default;
+  margin-left: 0.8rem;
+}
