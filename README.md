@@ -3,7 +3,7 @@
 Assignment about integrating with [Github API](https://docs.github.com/en/rest/reference/repos) for fetching the repositories from a username or an organization. This assignment was certified by [Dwarves Foundation](https://dwarves.foundation/).
 This project was deployed in this [link](https://dwarves-foundation-assignment.s3.amazonaws.com/index.html). Feel free to check out that.
 
-![dwarves-foundation-assignment](./images/dwarves-foundation-assignment.png)
+![dwarves-foundation-assignment](./images/dwarves-foundation-assignment-background.png)
 *Dwarves Foundation Assignment UI*
 
 ## Requirements
